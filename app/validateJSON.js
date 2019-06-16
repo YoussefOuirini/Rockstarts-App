@@ -12,6 +12,16 @@ function validateJSON(jsonToValidate, schema) {
   return validator.validate(jsonToValidate, schema);
 }
 
+exports.validateSongGenre = function validateSongGenre(jsonToValidate) {
+  const schema = {
+    type: 'object',
+    properties: {
+      Genre: { type: 'integer', required: true },
+    },
+  };
+  return validateJSON(jsonToValidate, schema);
+};
+
 exports.validateAddSong = function validateAddSong(jsonToValidate) {
   const schema = {
     type: 'object',

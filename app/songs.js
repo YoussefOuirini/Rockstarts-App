@@ -1,7 +1,9 @@
 const { songs } = require('./database.js');
-const { validateAddSong, validateDeleteSong } = require('./validateJSON');
+const { validateAddSong, validateDeleteSong, validateSongGenre } = require('./validateJSON');
 
 exports.getSong = function getSong(req, res) {
+  const genreValidation = validateSongGenre(req.body);
+  if (!genreValidation.valid) { res.send(`${genreValidation}`); return; }
   res.send(songs.find({ Genre: req.body.Genre }));
 };
 

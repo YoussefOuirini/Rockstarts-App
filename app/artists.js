@@ -1,7 +1,7 @@
 const { artists } = require('./database.js');
 
 exports.getArtist = function getArtist(req, res) {
-  res.send(artists.find({ Name: req.body.name }));
+  res.send(artists.find({ Name: req.body.Name }));
 };
 
 exports.getAllArtists = function getAllArtists(req, res) {
@@ -17,4 +17,9 @@ exports.addArtist = function addArtist(req, res) {
     artists.insert(req.body);
     res.send(`${req.body.Name} added to artists.`);
   }
+};
+
+exports.deleteArtist = function deleteArtist(req, res) {
+  artists.findAndRemove({ Id: req.body.Id });
+  res.send(`Document with Id: ${req.body.Id} is removed`);
 };

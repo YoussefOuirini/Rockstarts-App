@@ -4,11 +4,11 @@ const {importData} = require('./database.js');
 importData();
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = 8080;
 
 app.listen(PORT);
 
-const requiredRoute = require('./routes');
+const routes = require('./routes');
 
-requiredRoute(app);
+routes(app);
 module.exports = app;

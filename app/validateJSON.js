@@ -41,11 +41,32 @@ exports.validateAddSong = function validateAddSong(jsonToValidate) {
   return validateJSON(jsonToValidate, schema);
 };
 
-exports.validateId = function validateSongId(jsonToValidate) {
+exports.validateId = function validateId(jsonToValidate) {
   const schema = {
     type: 'object',
     properties: {
       Id: { type: 'integer', required: true },
+    },
+  };
+  return validateJSON(jsonToValidate, schema);
+};
+
+exports.validateArtistName = function validateArtistName(jsonToValidate) {
+  const schema = {
+    type: 'object',
+    properties: {
+      Name: { type: 'integer', required: true },
+    },
+  };
+  return validateJSON(jsonToValidate, schema);
+};
+
+exports.validateAddArtist = function validateAddArtist(jsonToValidate) {
+  const schema = {
+    type: 'object',
+    properties: {
+      Id: { type: 'integer', required: true },
+      Name: { type: 'string', required: true },
     },
   };
   return validateJSON(jsonToValidate, schema);

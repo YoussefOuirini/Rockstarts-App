@@ -1,8 +1,10 @@
 const { artists } = require('./database.js');
-const { validateId } = require('./validateJSON');
+const { validateId, validateAddArtist, validateArtistName } = require('./validateJSON');
 
 
 exports.getArtist = function getArtist(req, res) {
+  const nameValidation = validateArtistName(req.body);
+  if (!nameValidation.valid) { res.send(`${nameValidation}`); return; }
   res.send(artists.find({ Name: req.body.Name }));
 };
 
@@ -11,7 +13,8 @@ exports.getAllArtists = function getAllArtists(req, res) {
 };
 
 exports.addArtist = function addArtist(req, res) {
-  // Add some verification here to check req.body
+  const artistValidation = validateAddArtist(req.body);
+  if (!artistValidation.valid) { res.send(`${artistValidation}`); return; }
   const artist = artists.find({ Name: req.body.Name });
   if (artist.length > 0) {
     res.send(`${req.body.Name} is already in the database.`);

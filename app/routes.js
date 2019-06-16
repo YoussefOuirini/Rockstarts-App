@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
 const {
-  getArtist, getAllArtists, addArtist, deleteArtist,
+  getArtist, getAllArtists, addArtist, deleteArtist, updateArtist,
 } = require('./artists.js');
 const {
   getSong, getAllSongs, addSong, deleteSong, updateSong,
@@ -15,6 +15,7 @@ module.exports = (app) => {
   app.post('/getArtist', jsonParser, getArtist);
   app.post('/addArtist', jsonParser, addArtist);
   app.delete('/deleteArtist', jsonParser, deleteArtist);
+  app.put('/updateArtist', jsonParser, updateArtist);
 
   app.get('/getAllSongs', jsonParser, getAllSongs);
   app.post('/getSong', jsonParser, getSong);

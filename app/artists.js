@@ -23,3 +23,10 @@ exports.deleteArtist = function deleteArtist(req, res) {
   artists.findAndRemove({ Id: req.body.Id });
   res.send(`Document with Id: ${req.body.Id} is removed`);
 };
+
+exports.updateArtist = function updateArtist(req, res) {
+  const artistToUpdate = artists.findOne({ Id: req.body.Id });
+  const updatedArtist = Object.assign(artistToUpdate, req.body.Update);
+  artists.update(updatedArtist);
+  res.send(`Updated artist to ${JSON.stringify(req.body.Update)}`);
+};

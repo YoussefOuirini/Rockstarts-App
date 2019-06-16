@@ -28,5 +28,5 @@ exports.updateSong = function updateSong(req, res) {
   const songToUpdate = songs.findOne({ Id: req.body.Id });
   const updatedSong = Object.assign(songToUpdate, req.body.Update);
   songs.update(updatedSong);
-  res.send(`Updated song to ${JSON.stringify(updatedSong)}`);
+  res.send(`Updated song to ${JSON.stringify(req.body.Update)}`);
 };

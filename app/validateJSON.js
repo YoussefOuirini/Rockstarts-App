@@ -16,7 +16,7 @@ exports.validateSongGenre = function validateSongGenre(jsonToValidate) {
   const schema = {
     type: 'object',
     properties: {
-      Genre: { type: 'integer', required: true },
+      Genre: { type: 'string', required: true },
     },
   };
   return validateJSON(jsonToValidate, schema);
@@ -55,7 +55,7 @@ exports.validateArtistName = function validateArtistName(jsonToValidate) {
   const schema = {
     type: 'object',
     properties: {
-      Name: { type: 'integer', required: true },
+      Name: { type: 'string', required: true },
     },
   };
   return validateJSON(jsonToValidate, schema);

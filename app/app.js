@@ -8,10 +8,6 @@ app.use('/');
 
 app.listen(PORT);
 
-app.get('/healthcheck', (req, res) => {
-  res.send("I'm OK!");
-});
-
 const requiredRoute = require('./routes');
 
 requiredRoute(app);

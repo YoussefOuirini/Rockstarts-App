@@ -1,9 +1,10 @@
 const express = require('express');
+const {importData} = require('./database.js');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.use('/', express.static('swagger'));
+app.use('/');
 
 app.listen(PORT);
 

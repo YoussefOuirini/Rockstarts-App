@@ -6,5 +6,5 @@ const { getBand } = require('./getBand.js');
 
 /** @desc: list API calls * */
 module.exports = (app) => {
-  app.get('/getBand', getBand);
+  app.post('/getBand', jsonParser, getBand);
 };

@@ -3,7 +3,9 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
 const { getArtist, getAllArtists, addArtist } = require('./artists.js');
-const { getSong, getAllSongs, addSong } = require('./songs.js');
+const {
+  getSong, getAllSongs, addSong, deleteSong,
+} = require('./songs.js');
 
 /** @desc: list API calls * */
 module.exports = (app) => {
@@ -14,4 +16,5 @@ module.exports = (app) => {
   app.get('/getAllSongs', jsonParser, getAllSongs);
   app.post('/getSong', jsonParser, getSong);
   app.post('/addSong', jsonParser, addSong);
+  app.delete('/deleteSong', jsonParser, deleteSong);
 };

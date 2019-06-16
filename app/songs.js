@@ -18,3 +18,8 @@ exports.addSong = function addSong(req, res) {
     res.send(`${req.body.Name} added to songs.`);
   }
 };
+
+exports.deleteSong = function deleteSong(req, res) {
+  songs.findAndRemove({ Id: req.body.Id });
+  res.send(`Document with Id: ${req.body.Id} is removed`);
+};

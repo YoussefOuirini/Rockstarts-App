@@ -32,7 +32,9 @@ exports.deleteArtist = function deleteArtist(req, res) {
 };
 
 exports.updateArtist = function updateArtist(req, res) {
-  const updateValidation = validateId(req.body);
+  const idValidation = validateId(req.body);
+  if (!idValidation.valid) { res.send(`${idValidation}`); return; }
+  const updateValidation = validateAddArtist(req.body.Update);
   if (!updateValidation.valid) { res.send(`${updateValidation}`); return; }
   const artistToUpdate = artists.findOne({ Id: req.body.Id });
   const updatedArtist = Object.assign(artistToUpdate, req.body.Update);

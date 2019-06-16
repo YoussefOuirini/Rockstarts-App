@@ -1,7 +1,7 @@
 const { songs } = require('./database.js');
 
 exports.getSong = function getSong(req, res) {
-  res.send(songs.find({ Genre: req.body.genre }));
+  res.send(songs.find({ Genre: req.body.Genre }));
 };
 
 exports.getAllSongs = function getAllSongs(req, res) {
@@ -22,4 +22,11 @@ exports.addSong = function addSong(req, res) {
 exports.deleteSong = function deleteSong(req, res) {
   songs.findAndRemove({ Id: req.body.Id });
   res.send(`Document with Id: ${req.body.Id} is removed`);
+};
+
+exports.updateSong = function updateSong(req, res) {
+  const songToUpdate = songs.findOne({ Id: req.body.Id });
+  const updatedSong = Object.assign(songToUpdate, req.body.Update);
+  songs.update(updatedSong);
+  res.send(`Updated song to ${JSON.stringify(updatedSong)}`);
 };

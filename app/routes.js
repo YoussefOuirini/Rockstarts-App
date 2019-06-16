@@ -6,7 +6,7 @@ const {
   getArtist, getAllArtists, addArtist, deleteArtist,
 } = require('./artists.js');
 const {
-  getSong, getAllSongs, addSong, deleteSong,
+  getSong, getAllSongs, addSong, deleteSong, updateSong,
 } = require('./songs.js');
 
 /** @desc: list API calls * */
@@ -20,4 +20,5 @@ module.exports = (app) => {
   app.post('/getSong', jsonParser, getSong);
   app.post('/addSong', jsonParser, addSong);
   app.delete('/deleteSong', jsonParser, deleteSong);
+  app.put('/updateSong', jsonParser, updateSong);
 };

@@ -12,3 +12,6 @@ exports.importData = function importData() {
   artists.insert(artistsJson);
   songs.insert(songsJson);
 };
+
+exports.artists = artists;
+exports.songs = songs;

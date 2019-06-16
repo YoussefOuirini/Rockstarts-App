@@ -1,5 +1,5 @@
 const { songs } = require('./database.js');
-const { validateAddSong, validateSongId, validateSongGenre } = require('./validateJSON');
+const { validateAddSong, validateId, validateSongGenre } = require('./validateJSON');
 
 exports.getSong = function getSong(req, res) {
   const genreValidation = validateSongGenre(req.body);
@@ -24,14 +24,14 @@ exports.addSong = function addSong(req, res) {
 };
 
 exports.deleteSong = function deleteSong(req, res) {
-  const deletionValidation = validateSongId(req.body);
+  const deletionValidation = validateId(req.body);
   if (!deletionValidation.valid) { res.send(`${deletionValidation}`); return; }
   songs.findAndRemove({ Id: req.body.Id });
   res.send(`Document with Id: ${req.body.Id} is removed`);
 };
 
 exports.updateSong = function updateSong(req, res) {
-  const updateValidation = validateSongId(req.body);
+  const updateValidation = validateId(req.body);
   if (!updateValidation.valid) { res.send(`${updateValidation}`); return; }
   const songToUpdate = songs.findOne({ Id: req.body.Id });
   const updatedSong = Object.assign(songToUpdate, req.body.Update);

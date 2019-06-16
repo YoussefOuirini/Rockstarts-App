@@ -1,4 +1,6 @@
 const { artists } = require('./database.js');
+const { validateId } = require('./validateJSON');
+
 
 exports.getArtist = function getArtist(req, res) {
   res.send(artists.find({ Name: req.body.Name }));
@@ -20,11 +22,15 @@ exports.addArtist = function addArtist(req, res) {
 };
 
 exports.deleteArtist = function deleteArtist(req, res) {
+  const deletionValidation = validateId(req.body);
+  if (!deletionValidation.valid) { res.send(`${deletionValidation}`); return; }
   artists.findAndRemove({ Id: req.body.Id });
   res.send(`Document with Id: ${req.body.Id} is removed`);
 };
 
 exports.updateArtist = function updateArtist(req, res) {
+  const updateValidation = validateId(req.body);
+  if (!updateValidation.valid) { res.send(`${updateValidation}`); return; }
   const artistToUpdate = artists.findOne({ Id: req.body.Id });
   const updatedArtist = Object.assign(artistToUpdate, req.body.Update);
   artists.update(updatedArtist);

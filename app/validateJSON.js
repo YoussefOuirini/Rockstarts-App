@@ -41,7 +41,7 @@ exports.validateAddSong = function validateAddSong(jsonToValidate) {
   return validateJSON(jsonToValidate, schema);
 };
 
-exports.validateSongId = function validateSongId(jsonToValidate) {
+exports.validateId = function validateSongId(jsonToValidate) {
   const schema = {
     type: 'object',
     properties: {

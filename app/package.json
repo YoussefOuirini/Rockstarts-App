@@ -1,0 +1,14 @@
+{
+  "name": "rockstars",
+  "version": "1.0.0",
+  "description": "app to look for rock bands",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lokijs": "^1.5.6"
+  }
+}

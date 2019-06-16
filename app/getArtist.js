@@ -1,5 +1,5 @@
 const { artists } = require('./database.js');
 
-exports.getBand = function getBand(req, res) {
+exports.getArtist = function getArtist(req, res) {
   res.send(artists.find({ Name: req.body.name }));
 };

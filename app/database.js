@@ -10,7 +10,9 @@ const songsJson = require('../data/songs.json');
 
 const metalSongs = songsJson.filter(song => song.Genre === 'Metal');
 const songsBefore2016 = songsJson.filter(song => song.Year < 2016);
-const metalArtists = artistsJson.filter(artist => metalSongs.find(song => artist.Name === song.Artist));
+const metalArtists = artistsJson.filter(
+  artist => metalSongs.find(song => artist.Name === song.Artist),
+);
 
 exports.importData = function importData() {
   artists.insert(metalArtists);

@@ -37,6 +37,7 @@ exports.validateAddSong = function validateAddSong(jsonToValidate) {
       SpotifyId: { type: 'string', required: true },
       Album: { type: 'string', required: true },
     },
+    required: true,
   };
   return validateJSON(jsonToValidate, schema);
 };

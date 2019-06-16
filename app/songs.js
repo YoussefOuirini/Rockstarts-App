@@ -31,7 +31,9 @@ exports.deleteSong = function deleteSong(req, res) {
 };
 
 exports.updateSong = function updateSong(req, res) {
-  const updateValidation = validateId(req.body);
+  const idValidation = validateId(req.body);
+  if (!idValidation.valid) { res.send(`${idValidation}`); return; }
+  const updateValidation = validateAddSong(req.body.Update);
   if (!updateValidation.valid) { res.send(`${updateValidation}`); return; }
   const songToUpdate = songs.findOne({ Id: req.body.Id });
   const updatedSong = Object.assign(songToUpdate, req.body.Update);
